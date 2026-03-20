@@ -2,12 +2,12 @@
 
 :root {
     --bg:        #0c0c0d;
-    --surface:   #131316;
-    --border:    #232328;
-    --border-hi: #3a3a42;
-    --text:      #ddddd8;
-    --text-dim:  #666668;
-    --text-mid:  #999998;
+    --surface:   #17171b;
+    --border:    #2a2a33;
+    --border-hi: #3f3f49;
+    --text:      #f2f2ee;
+    --text-dim:  #a8a8a0;
+    --text-mid:  #cfcfca;
     --neon:      #39ff9a;   /* 청록 → 민트그린: 덜 클리셰 */
     --neon-dim:  rgba(57, 255, 154, 0.12);
     --neon-glow: rgba(57, 255, 154, 0.35);
@@ -27,7 +27,7 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     line-height: 1.65;
-    /* 미세한 노이즈 텍스처 */
+    /* 미세한 노이즈 텍스처 (가독성 우선이라 약하게) */
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.028'/%3E%3C/svg%3E");
 }
 
@@ -111,7 +111,7 @@ header h1 span {
     max-width: 480px;
     position: relative;
     z-index: 1;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.8;
 }
 
@@ -208,7 +208,7 @@ header h1 span {
 }
 
 .project-card:hover {
-    background-color: #16161b;
+    background-color: #1c1c22;
 }
 
 /* 호버시 왼쪽 네온 라인 */
@@ -235,6 +235,7 @@ header h1 span {
     letter-spacing: 0.12em;
     margin-bottom: 14px;
     text-transform: uppercase;
+    text-shadow: 0 0 10px var(--neon-glow);
 }
 
 .project-card h3 {
@@ -249,7 +250,7 @@ header h1 span {
 .project-card p {
     font-size: 0.86rem;
     color: var(--text-mid);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.7;
     flex: 1;
 }
@@ -262,11 +263,13 @@ header h1 span {
     font-family: 'Inconsolata', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.1em;
-    color: var(--text-dim);
+    color: var(--text-mid);
     text-decoration: none;
     text-transform: uppercase;
     transition: color 0.2s;
     align-self: flex-start;
+    border-bottom: 1px solid rgba(207, 207, 202, 0.55);
+    padding-bottom: 2px;
 }
 
 .card-link::after {
