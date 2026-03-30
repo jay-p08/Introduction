@@ -20,17 +20,6 @@
 
 <br>
 
-## 📁 파일 구조
-
-```
-📦 자기소개서 레포
- ┣ 📄 introduction.html   # 자기소개서 메인 페이지
- ┣ 📄 introduction.css    # 스타일시트
- ┗ 📄 README.md           # 리드미
-```
-
-<br>
-
 ## 🔗 링크
 
 - **GitHub** : [github.com/jay-p08](https://github.com/jay-p08)
