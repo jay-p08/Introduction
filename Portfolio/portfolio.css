@@ -1,25 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 :root {
-    --bg:        #1a1a1e;
-    --surface:   #252529;
-    --border:    #3d3d47;
+    --bg: #1a1a1e;
+    --surface: #252529;
+    --border: #3d3d47;
     --border-hi: #4d4d57;
-    --text:      #ffffff;
-    --text-dim:  #b8b8b0;
-    --text-mid:  #e0e0d8;
-    --neon:      #39ff9a;   /* 청록 → 민트그린: 덜 클리셰 */
-    --neon-dim:  rgba(57, 255, 154, 0.12);
+    --text: #ffffff;
+    --text-dim: #b8b8b0;
+    --text-mid: #e0e0d8;
+    --neon: #39ff9a;
+    /* 청록 → 민트그린: 덜 클리셰 */
+    --neon-dim: rgba(57, 255, 154, 0.12);
     --neon-glow: rgba(57, 255, 154, 0.35);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: var(--bg);
@@ -32,8 +37,14 @@ body {
 }
 
 /* ── CURSOR ── */
-body { cursor: crosshair; }
-a, button { cursor: crosshair; }
+body {
+    cursor: crosshair;
+}
+
+a,
+button {
+    cursor: crosshair;
+}
 
 /* ── HEADER ── */
 header {
@@ -96,7 +107,7 @@ header h1 {
     position: relative;
     z-index: 1;
     /* 텍스트 스트로크 효과 */
-    -webkit-text-stroke: 1px rgba(255,255,255,0.08);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
 }
 
 header h1 span {
@@ -179,14 +190,37 @@ header h1 span {
 }
 
 /* 카드 크기 변주 */
-.project-card:nth-child(1) { grid-column: span 8; }
-.project-card:nth-child(2) { grid-column: span 4; }
-.project-card:nth-child(3) { grid-column: span 4; }
-.project-card:nth-child(4) { grid-column: span 4; }
-.project-card:nth-child(5) { grid-column: span 4; }
-.project-card:nth-child(6) { grid-column: span 6; }
-.project-card:nth-child(7) { grid-column: span 6; }
-.project-card:nth-child(8) { grid-column: span 12; }
+.project-card:nth-child(1) {
+    grid-column: span 8;
+}
+
+.project-card:nth-child(2) {
+    grid-column: span 4;
+}
+
+.project-card:nth-child(3) {
+    grid-column: span 4;
+}
+
+.project-card:nth-child(4) {
+    grid-column: span 4;
+}
+
+.project-card:nth-child(5) {
+    grid-column: span 4;
+}
+
+.project-card:nth-child(6) {
+    grid-column: span 6;
+}
+
+.project-card:nth-child(7) {
+    grid-column: span 6;
+}
+
+.project-card:nth-child(8) {
+    grid-column: span 12;
+}
 
 .project-card {
     background-color: var(--surface);
@@ -328,20 +362,42 @@ footer {
 
 /* ── 로드 애니메이션 ── */
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.header-label { animation: fadeUp 0.6s ease both; }
-header h1     { animation: fadeUp 0.6s 0.1s ease both; }
-.header-desc  { animation: fadeUp 0.6s 0.2s ease both; }
-.header-meta  { animation: fadeUp 0.6s 0.3s ease both; }
+.header-label {
+    animation: fadeUp 0.6s ease both;
+}
+
+header h1 {
+    animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.header-desc {
+    animation: fadeUp 0.6s 0.2s ease both;
+}
+
+.header-meta {
+    animation: fadeUp 0.6s 0.3s ease both;
+}
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    header { padding: 0 28px 56px; }
+    header {
+        padding: 0 28px 56px;
+    }
 
-    .project-card:nth-child(n) { grid-column: span 12; }
+    .project-card:nth-child(n) {
+        grid-column: span 12;
+    }
 
     footer {
         flex-direction: column;
@@ -349,7 +405,9 @@ header h1     { animation: fadeUp 0.6s 0.1s ease both; }
         padding: 40px 28px;
     }
 
-    #projects { padding: 72px 24px; }
+    #projects {
+        padding: 72px 24px;
+    }
 }
 
 /* ── PAGE / PDF-LIKE LAYOUT ── */
@@ -605,6 +663,7 @@ header h1     { animation: fadeUp 0.6s 0.1s ease both; }
     overflow-wrap: anywhere;
     text-overflow: ellipsis;
 }
+
 .page-skills .page-label {
     margin-bottom: 12px;
     flex-shrink: 0;
@@ -784,6 +843,7 @@ header h1     { animation: fadeUp 0.6s 0.1s ease both; }
     flex-direction: column;
     justify-content: flex-start;
 }
+
 .page-skills .stack-block:hover {
     background: rgba(57, 255, 154, 0.12);
     border-color: var(--neon);
@@ -1345,5 +1405,738 @@ header h1     { animation: fadeUp 0.6s 0.1s ease both; }
 
     .detail-list li {
         font-size: 0.8rem;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   SCREENSHOT SLOTS — 프로젝트 사진 자리
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.project-screenshots {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+.screenshot-slot {
+    flex: 1;
+    aspect-ratio: 16 / 5;
+    border: 1px dashed rgba(57, 255, 154, 0.3);
+    background: rgba(57, 255, 154, 0.03);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: crosshair;
+}
+
+.screenshot-slot:hover {
+    border-color: rgba(57, 255, 154, 0.6);
+    background: rgba(57, 255, 154, 0.06);
+}
+
+/* 사진이 들어올 경우 img 태그로 교체 시 꽉 채우기 */
+.screenshot-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.screenshot-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.screenshot-icon {
+    font-size: 1.6rem;
+    color: rgba(57, 255, 154, 0.25);
+    line-height: 1;
+    animation: pulse-icon 3s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+
+    0%,
+    100% {
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 0.55;
+    }
+}
+
+.screenshot-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: rgba(57, 255, 154, 0.4);
+    text-transform: lowercase;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PROJECT LAYOUT — 2컬럼 (왼쪽 박스 2개 / 오른쪽 사진 2장)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.page-project {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.project-left {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+}
+
+/* ── 정보 박스 (개요 / 설명) ── */
+.project-info-box {
+    flex: 1;
+    border: 1px solid rgba(57, 255, 154, 0.2);
+    background: rgba(57, 255, 154, 0.05);
+    border-left: 3px solid var(--neon);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.project-info-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--neon);
+    padding: 7px 14px;
+    background: rgba(57, 255, 154, 0.1);
+    border-bottom: 1px solid rgba(57, 255, 154, 0.15);
+    flex-shrink: 0;
+}
+
+/* 개요 박스 — key/value 행 */
+.project-info-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 14px;
+    flex: 1;
+}
+
+.project-info-body div {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(57, 255, 154, 0.07);
+    font-size: 0.88rem;
+}
+
+.project-info-body div:last-child {
+    border-bottom: none;
+}
+
+.project-info-body strong {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.72rem;
+    color: var(--neon);
+    letter-spacing: 0.08em;
+    width: 44px;
+    flex-shrink: 0;
+}
+
+.project-info-body span {
+    color: var(--text-mid);
+    font-size: 0.88rem;
+}
+
+/* 설명 박스 — 리스트 */
+.project-desc-list {
+    list-style: none;
+    padding: 10px 14px;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.project-desc-list li {
+    font-size: 0.84rem;
+    color: var(--text-mid);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.project-desc-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--neon);
+    font-size: 0.7rem;
+    top: 2px;
+}
+
+/* card-link in 설명 박스 */
+.project-info-box .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 14px 12px;
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--neon);
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(57, 255, 154, 0.4);
+    padding-bottom: 1px;
+    align-self: flex-start;
+    transition: opacity 0.2s;
+}
+
+.project-info-box .card-link:hover {
+    opacity: 0.7;
+}
+
+/* ── 오른쪽 사진 슬롯 ── */
+.project-right {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+}
+
+.project-right .screenshot-slot {
+    flex: 1;
+    aspect-ratio: unset;
+    border: 1px dashed rgba(57, 255, 154, 0.25);
+    background: rgba(57, 255, 154, 0.03);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    min-height: 0;
+}
+
+.project-right .screenshot-slot:hover {
+    border-color: rgba(57, 255, 154, 0.5);
+}
+
+.project-right .screenshot-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.screenshot-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.screenshot-icon {
+    font-size: 1.4rem;
+    color: rgba(57, 255, 154, 0.2);
+    animation: pulse-icon 3s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.screenshot-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: rgba(57, 255, 154, 0.35);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   CODE REVIEW PAGE
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.page-code-review {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.code-review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.code-block-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.code-block-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: var(--neon);
+    text-transform: uppercase;
+    padding: 6px 14px;
+    background: rgba(57, 255, 154, 0.1);
+    border: 1px solid rgba(57, 255, 154, 0.2);
+    border-bottom: none;
+    flex-shrink: 0;
+}
+
+.code-block {
+    margin: 0;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(57, 255, 154, 0.15);
+    border-left: 3px solid var(--neon);
+    overflow-x: auto;
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.76rem;
+    line-height: 1.65;
+    color: var(--text-mid);
+    flex: 1;
+}
+
+.code-block code {
+    display: block;
+    white-space: pre;
+}
+
+.code-keyword {
+    color: #79b8ff;
+}
+
+.code-fn {
+    color: var(--neon);
+}
+
+.code-str {
+    color: #f97583;
+}
+
+.code-num {
+    color: #ffab70;
+}
+
+.code-comment {
+    color: #6a737d;
+    font-style: italic;
+}
+
+.code-learned {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.learned-item {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid rgba(57, 255, 154, 0.12);
+    background: rgba(57, 255, 154, 0.04);
+    border-left: 3px solid rgba(57, 255, 154, 0.3);
+}
+
+.learned-title {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.7rem;
+    color: var(--neon);
+    letter-spacing: 0.1em;
+    margin-bottom: 7px;
+}
+
+.learned-item p {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@media print {
+    body {
+        background: #1a1a1e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .pages {
+        gap: 0;
+        padding: 0;
+    }
+
+    .page {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none;
+        border: none;
+        overflow: hidden;
+    }
+}
+
+/* Avatar image styling */
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+    .scroll-indicator {
+        display: none !important;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+
+    .project-layout,
+    .code-review-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .project-right {
+        flex-direction: row;
+        height: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-right {
+        height: 120px;
+    }
+
+    .code-block {
+        font-size: 0.7rem;
+        padding: 12px;
+    }
+
+    .learned-item {
+        padding: 10px 12px;
+    }
+
+    .learned-item p {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-right {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .project-right .screenshot-slot {
+        aspect-ratio: 16 / 6;
+        flex: unset;
+    }
+
+    .code-block {
+        font-size: 0.64rem;
+    }
+
+    .code-block-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        color: rgba(57, 255, 154, 0.4);
+        text-transform: lowercase;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   CODE REVIEW PAGE
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.page-code-review {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.code-review-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── 코드 블록 ── */
+.code-block-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.code-block-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: var(--neon);
+    text-transform: uppercase;
+    padding: 6px 14px;
+    background: rgba(57, 255, 154, 0.1);
+    border: 1px solid rgba(57, 255, 154, 0.2);
+    border-bottom: none;
+}
+
+.code-block {
+    margin: 0;
+    padding: 18px 18px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(57, 255, 154, 0.15);
+    border-left: 3px solid var(--neon);
+    overflow-x: auto;
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text-mid);
+    flex: 1;
+}
+
+.code-block code {
+    display: block;
+    white-space: pre;
+}
+
+/* 신택스 컬러 */
+.code-keyword {
+    color: #79b8ff;
+}
+
+.code-fn {
+    color: var(--neon);
+}
+
+.code-str {
+    color: #f97583;
+}
+
+.code-num {
+    color: #ffab70;
+}
+
+.code-comment {
+    color: #6a737d;
+    font-style: italic;
+}
+
+/* ── 배운 점 패널 ── */
+.code-learned {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.learned-item {
+    padding: 16px 18px;
+    border: 1px solid rgba(57, 255, 154, 0.12);
+    background: rgba(57, 255, 154, 0.04);
+    border-radius: 2px;
+    flex: 1;
+}
+
+.learned-title {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.72rem;
+    color: var(--neon);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    text-shadow: 0 0 10px rgba(57, 255, 154, 0.3);
+}
+
+.learned-item p {
+    font-size: 0.84rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE — CODE REVIEW & SCREENSHOTS
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+    .code-review-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .project-screenshots {
+        gap: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-screenshots {
+        flex-direction: column;
+    }
+
+    .screenshot-slot {
+        aspect-ratio: 16 / 7;
+    }
+
+    .code-block {
+        font-size: 0.72rem;
+        padding: 14px 12px;
+    }
+
+    .learned-item {
+        padding: 12px 14px;
+    }
+
+    .learned-item p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .code-block {
+        font-size: 0.66rem;
+    }
+
+    .screenshot-slot {
+        aspect-ratio: 4 / 3;
+    }
+}
+
+/* ══════════════════════════════════════════════════════
+   PRINT STYLES — 인쇄 / PDF 출력용
+   ══════════════════════════════════════════════════════ */
+@media print {
+    body {
+        background: #1a1a1e !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .pages {
+        gap: 0;
+        padding: 0;
+    }
+
+    .page {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        page-break-after: always;
+        break-after: page;
+        box-shadow: none;
+        border: none;
+        overflow: hidden;
+        /* 이걸로 잘림 방지 */
+    }
+
+    .screenshot-slot {
+        aspect-ratio: 16 / 5;
+    }
+
+    /* 스크롤 인디케이터 숨기기 */
+    .scroll-indicator {
+        display: none !important;
+    }
+}
+
+.project-tagline {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    font-family: 'Inconsolata', monospace;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    border-left: 2px solid var(--neon);
+    padding-left: 12px;
+}
+
+.project-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    min-height: 0;
+}
+
+.project-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.project-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.project-right .screenshot-slot {
+    flex: 1;
+    aspect-ratio: unset;
+    /* 위아래 반반으로 채우기 */
+}
+
+/* 기존 page-project flex 설정 보완 */
+.page-project {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .project-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .project-right {
+        flex-direction: row;
+        height: 140px;
+    }
+
+    .project-right .screenshot-slot {
+        flex: 1;
+        aspect-ratio: unset;
     }
 }
