@@ -27,30 +27,18 @@
             --neon-dim: rgba(24, 201, 106, 0.10);
             --neon-border: rgba(24, 201, 106, 0.30);
 
-            /* 기준 폰트: 1920px 기준으로 설계, vw로 자동 스케일 */
             --f-xs: 0.73vw;
-            /* ~14px @ 1920 */
             --f-sm: 0.83vw;
-            /* ~16px */
             --f-md: 0.94vw;
-            /* ~18px */
             --f-lg: 1.15vw;
-            /* ~22px */
             --f-xl: 1.46vw;
-            /* ~28px */
             --f-2xl: 2.08vw;
-            /* ~40px */
             --f-3xl: 3.13vw;
-            /* ~60px */
             --f-4xl: 5.21vw;
-            /* ~100px */
             --f-5xl: 7.29vw;
-            /* ~140px */
 
             --pad-page: 4.17vw;
-            /* ~80px side padding */
             --pad-v: 3.13vw;
-            /* ~60px vertical */
         }
 
         *,
@@ -81,7 +69,6 @@
             text-decoration: underline;
         }
 
-        /* ══ PAGES WRAPPER ══ */
         .pages {
             display: flex;
             flex-direction: column;
@@ -90,7 +77,6 @@
             padding: 1.25vw 0;
         }
 
-        /* ══ SINGLE PAGE — strict 16:9 ══ */
         .page {
             width: 100%;
             max-width: 1920px;
@@ -98,7 +84,6 @@
             background: var(--bg);
             position: relative;
             overflow: hidden;
-            /* 절대로 잘리지 않도록: 내용이 넘치면 JS가 페이지 분할 */
         }
 
         /* Grid overlay */
@@ -114,7 +99,6 @@
             z-index: 0;
         }
 
-        /* Page number */
         .page-num {
             position: absolute;
             right: 1.67vw;
@@ -141,7 +125,6 @@
             opacity: 0.5;
         }
 
-        /* ══ MATRIX RAIN CANVAS (shared) ══ */
         .matrix-canvas {
             position: absolute;
             inset: 0;
@@ -150,9 +133,7 @@
             pointer-events: none;
         }
 
-        /* ══════════════════════════════════════════════════════════
-   PAGE 01 — TITLE
-══════════════════════════════════════════════════════════ */
+        /* PAGE 01 */
         .p01 {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -225,7 +206,6 @@
             overflow: hidden;
         }
 
-        /* Stat cards */
         .stat-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -284,7 +264,6 @@
             margin-top: 0.3vw;
         }
 
-        /* Tech tags */
         .tech-tags {
             display: flex;
             flex-wrap: wrap;
@@ -309,7 +288,6 @@
             background: var(--neon-dim);
         }
 
-        /* Timeline */
         .timeline-strip {
             border: 1px solid var(--border);
             background: var(--surface);
@@ -371,21 +349,7 @@
             line-height: 1.3;
         }
 
-        /* ══════════════════════════════════════════════════════════
-   PAGE 02 — ABOUT / SKILLS
-══════════════════════════════════════════════════════════ */
-        .p02 {
-            display: grid;
-            grid-template-columns: 14.58vw 1fr;
-            gap: 2.92vw;
-            padding: 2.92vw var(--pad-page);
-            align-content: start;
-        }
-
-        .p02-full {
-            grid-column: 1 / -1;
-        }
-
+        /* PAGE 02 */
         .profile-card {
             display: flex;
             flex-direction: column;
@@ -525,7 +489,6 @@
             font-weight: 500;
         }
 
-        /* Stack grid */
         .p02-right {
             display: flex;
             flex-direction: column;
@@ -585,7 +548,6 @@
             line-height: 1.5;
         }
 
-        /* Skill meters */
         .skill-meters {
             display: flex;
             flex-direction: column;
@@ -645,9 +607,7 @@
             flex-shrink: 0;
         }
 
-        /* ══════════════════════════════════════════════════════════
-   PROJECT PAGE BASE
-══════════════════════════════════════════════════════════ */
+        /* PROJECT PAGES */
         .page-project {
             display: flex;
             flex-direction: column;
@@ -919,9 +879,7 @@
             z-index: 1;
         }
 
-        /* ══════════════════════════════════════════════════════════
-   CODE REVIEW PAGE
-══════════════════════════════════════════════════════════ */
+        /* CODE REVIEW */
         .page-code {
             display: flex;
             flex-direction: column;
@@ -1073,9 +1031,7 @@
             line-height: 1.7;
         }
 
-        /* ══════════════════════════════════════════════════════════
-   CONTACT PAGE
-══════════════════════════════════════════════════════════ */
+        /* CONTACT */
         .page-contact {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1219,9 +1175,7 @@
             letter-spacing: 0.05em;
         }
 
-        /* ══════════════════════════════════════════════════════════
-   MATRIX FILLER PAGE
-══════════════════════════════════════════════════════════ */
+        /* MATRIX PAGE */
         .page-matrix {
             background: #0a0f1a;
             display: flex;
@@ -1264,7 +1218,6 @@
             text-transform: uppercase;
         }
 
-        /* Glitch */
         @keyframes glitch-clip {
 
             0%,
@@ -1321,7 +1274,6 @@
 
         @media print {
             @page {
-                /* A4 가로 방향 또는 16:9 비율 강제 지정 */
                 size: 1920px 1080px;
                 margin: 0;
             }
@@ -1334,7 +1286,6 @@
                 padding: 0;
             }
 
-            /* 가장 중요한 부분: Flexbox 해제 */
             .pages {
                 display: block !important;
                 padding: 0 !important;
@@ -1342,23 +1293,17 @@
             }
 
             .page {
-                /* 인쇄 용지 1장에 1페이지씩 꽉 차도록 강제 */
                 width: 100vw !important;
                 height: 100vh !important;
                 max-width: none !important;
                 aspect-ratio: auto !important;
-                /* 인쇄 시에는 비율 고정 해제 */
-
-                /* 페이지 나눔 강제 적용 */
                 page-break-after: always !important;
                 break-after: page !important;
                 page-break-inside: avoid !important;
                 break-inside: avoid !important;
-
                 margin: 0 !important;
                 position: relative;
                 overflow: hidden !important;
-                /* 넘치는 요소 숨김 */
             }
         }
     </style>
@@ -1367,9 +1312,7 @@
 <body>
     <div class="pages">
 
-        <!-- ══════════════════════════════════════
-     PAGE 01 — TITLE
-══════════════════════════════════════ -->
+        <!-- PAGE 01 — TITLE -->
         <div class="page p01">
             <canvas class="matrix-canvas" id="mc-title" style="opacity:0.06;"></canvas>
             <div class="p01-left">
@@ -1394,7 +1337,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="p01-right">
                 <div style="position:relative;z-index:2;">
                     <div class="label" style="margin-bottom:0.73vw;">STATS</div>
@@ -1421,7 +1363,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div style="position:relative;z-index:2;">
                     <div class="label" style="margin-bottom:0.52vw;">TECHNOLOGIES</div>
                     <div class="tech-tags">
@@ -1441,7 +1382,6 @@
                         <span class="tech-tag">Git / GitHub</span>
                     </div>
                 </div>
-
                 <div style="position:relative;z-index:2;">
                     <div class="timeline-strip">
                         <div class="timeline-strip-title">// DEVELOPMENT JOURNEY</div>
@@ -1477,14 +1417,12 @@
             <div class="page-num">— 01</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 02 — ABOUT ME
-══════════════════════════════════════ -->
+        <!-- PAGE 02 — ABOUT ME (수정됨: text-block 2개를 스택 아래 가로 배치로 이동) -->
         <div class="page"
             style="display:grid;grid-template-columns:14.58vw 1fr;gap:2.08vw;padding:2.6vw var(--pad-page);align-content:start;">
             <div style="grid-column:1/-1;"><span class="label">ABOUT ME</span></div>
 
-            <!-- left -->
+            <!-- left: 프로필 카드만 -->
             <div style="display:flex;flex-direction:column;gap:0.83vw;position:relative;z-index:1;">
                 <div class="profile-card">
                     <div class="avatar">
@@ -1509,19 +1447,9 @@
                         <a href="../index.html" target="_blank">이력서</a>
                     </div>
                 </div>
-                <div class="text-block">
-                    <div class="text-block-title">Core Philosophy</div>
-                    <p>단순히 동작하는 코드를 넘어, <strong>성능과 유지보수</strong>를 고려한 아키텍처 설계를 지향합니다. 게임 루프의 생명주기를 완벽히 이해하고, 프레임 드랍 없는
-                        쾌적한 플레이 경험을 만드는 것을 최우선으로 생각합니다.</p>
-                </div>
-                <div class="text-block" style="border-color:rgba(24,201,106,0.2);">
-                    <div class="text-block-title">Current Focus</div>
-                    <p>최근에는 <strong>Unreal Engine 5</strong>의 C++ 프레임워크와 멀티스레딩 최적화, 그리고 디자인 패턴을 활용하여 확장성 있고 견고한 시스템을
-                        설계하는 데 깊이 파고들고 있습니다.</p>
-                </div>
             </div>
 
-            <!-- right -->
+            <!-- right: Technical Stack + Proficiency + Philosophy/Focus (2열 가로 배치) -->
             <div class="p02-right">
                 <div class="stack-heading">Technical Stack</div>
                 <div class="stack-grid">
@@ -1536,7 +1464,7 @@
                         <div class="stack-desc">객체지향 프로그래밍(OOP) 원칙과 메모리 구조를 바탕으로 재사용성 높고 안전한 코드를 설계합니다.</div>
                     </div>
                     <div class="stack-block">
-                        <div class="stack-title">Graphics & Rendering</div>
+                        <div class="stack-title">Graphics &amp; Rendering</div>
                         <div class="stack-list">DirectX 11/12, OpenGL, HLSL, Shaders</div>
                         <div class="stack-desc">렌더링 파이프라인의 원리를 깊이 이해하고 있으며, 커스텀 셰이더 작성으로 시각적 효과를 구현합니다.</div>
                     </div>
@@ -1594,13 +1522,24 @@
                         <div class="skill-pct">60%</div>
                     </div>
                 </div>
+                <!-- Core Philosophy + Current Focus: 2열 가로 배치 -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.63vw;">
+                    <div class="text-block">
+                        <div class="text-block-title">Core Philosophy</div>
+                        <p>단순히 동작하는 코드를 넘어, <strong>성능과 유지보수</strong>를 고려한 아키텍처 설계를 지향합니다. 게임 루프의 생명주기를 완벽히 이해하고, 프레임 드랍
+                            없는 쾌적한 플레이 경험을 만드는 것을 최우선으로 생각합니다.</p>
+                    </div>
+                    <div class="text-block" style="border-color:rgba(24,201,106,0.2);">
+                        <div class="text-block-title">Current Focus</div>
+                        <p>최근에는 <strong>Unreal Engine 5</strong>의 C++ 프레임워크와 멀티스레딩 최적화, 그리고 디자인 패턴을 활용하여 확장성 있고 견고한 시스템을
+                            설계하는 데 깊이 파고들고 있습니다.</p>
+                    </div>
+                </div>
             </div>
             <div class="page-num">— 02</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 03 — PROJECT 01: RHYTHM GAME
-══════════════════════════════════════ -->
+        <!-- PAGE 03 — PROJECT 01: RHYTHM GAME -->
         <div class="page page-project">
             <div class="proj-num">// PROJECT 01</div>
             <div class="proj-title">Python Rhythm Game</div>
@@ -1637,7 +1576,7 @@
                     <div class="sec-block">
                         <div class="sec-title">기술적 학습</div>
                         <div class="feat-list">
-                            <div class="feat-row"><strong>게임 루프 & 델타 타이밍</strong> — deltaTime 기반 프레임 독립적 이동</div>
+                            <div class="feat-row"><strong>게임 루프 &amp; 델타 타이밍</strong> — deltaTime 기반 프레임 독립적 이동</div>
                             <div class="feat-row"><strong>상태 머신 패턴</strong> — 메뉴 → 게임 중 → 리절트 전환</div>
                             <div class="feat-row"><strong>사운드 동기화</strong> — BGM 재생 시간과 노트 타이밍 정합</div>
                             <div class="feat-row"><strong>렌더링 최적화</strong> — 딕셔너리 캐시로 드로우콜 최소화</div>
@@ -1710,9 +1649,7 @@
             <div class="page-num">— 03</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 04 — CODE REVIEW 01
-══════════════════════════════════════ -->
+        <!-- PAGE 04 — CODE REVIEW 01 -->
         <div class="page page-code">
             <span class="label" style="margin-bottom:0;">PROJECT 01 · CODE REVIEW</span>
             <div class="code-heading">코드 리뷰</div>
@@ -1781,9 +1718,7 @@ note_cache = {}
             <div class="page-num">— 04</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 05 — PROJECT 03: RANSOMWARE
-══════════════════════════════════════ -->
+        <!-- PAGE 05 — PROJECT 03: RANSOMWARE -->
         <div class="page page-project">
             <div class="proj-num">// PROJECT 03</div>
             <div class="proj-title">Educational Ransomware</div>
@@ -1894,9 +1829,7 @@ note_cache = {}
             <div class="page-num">— 07</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 06 — CODE REVIEW 03
-══════════════════════════════════════ -->
+        <!-- PAGE 06 — CODE REVIEW 03 -->
         <div class="page page-code">
             <span class="label" style="margin-bottom:0;">PROJECT 03 · CODE REVIEW</span>
             <div class="code-heading">코드 리뷰</div>
@@ -1946,9 +1879,7 @@ note_cache = {}
             <div class="page-num">— 08</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 07 — PROJECT 04: DIRECTX SHOOTER
-══════════════════════════════════════ -->
+        <!-- PAGE 07 — PROJECT 04: DIRECTX SHOOTER -->
         <div class="page page-project">
             <div class="proj-num">// PROJECT 04</div>
             <div class="proj-title">DirectX 2D Shooting Game</div>
@@ -2055,9 +1986,7 @@ note_cache = {}
             <div class="page-num">— 09</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 08 — CODE REVIEW 04
-══════════════════════════════════════ -->
+        <!-- PAGE 08 — CODE REVIEW 04 -->
         <div class="page page-code">
             <span class="label" style="margin-bottom:0;">PROJECT 04 · CODE REVIEW</span>
             <div class="code-heading">코드 리뷰</div>
@@ -2138,9 +2067,7 @@ note_cache = {}
             <div class="page-num">— 10</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 09 — PROJECT 05: BUBBLE BOBBLE
-══════════════════════════════════════ -->
+        <!-- PAGE 09 — PROJECT 05: BUBBLE BOBBLE -->
         <div class="page page-project">
             <div class="proj-num">// PROJECT 05</div>
             <div class="proj-title">Bubble Bobble</div>
@@ -2250,9 +2177,7 @@ note_cache = {}
             <div class="page-num">— 11</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 10 — CODE REVIEW 05
-══════════════════════════════════════ -->
+        <!-- PAGE 10 — CODE REVIEW 05 -->
         <div class="page page-code">
             <span class="label" style="margin-bottom:0;">PROJECT 05 · CODE REVIEW</span>
             <div class="code-heading">코드 리뷰</div>
@@ -2306,9 +2231,7 @@ note_cache = {}
             <div class="page-num">— 12</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 11 — PROJECT 06: TETRIS
-══════════════════════════════════════ -->
+        <!-- PAGE 11 — PROJECT 06: TETRIS -->
         <div class="page page-project">
             <div class="proj-num">// PROJECT 06</div>
             <div class="proj-title">Java Tetris Implementation</div>
@@ -2411,9 +2334,7 @@ note_cache = {}
             <div class="page-num">— 13</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 12 — CODE REVIEW 06
-══════════════════════════════════════ -->
+        <!-- PAGE 12 — CODE REVIEW 06 -->
         <div class="page page-code">
             <span class="label" style="margin-bottom:0;">PROJECT 06 · CODE REVIEW</span>
             <div class="code-heading">코드 리뷰</div>
@@ -2461,9 +2382,7 @@ note_cache = {}
             <div class="page-num">— 14</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 13 — PROJECT 08: UE5 FPS
-══════════════════════════════════════ -->
+        <!-- PAGE 13 — PROJECT 08: UE5 FPS -->
         <div class="page page-project">
             <div class="proj-num">// PROJECT 08</div>
             <div class="proj-title">Unreal Engine FPS Prototype</div>
@@ -2570,9 +2489,7 @@ note_cache = {}
             <div class="page-num">— 15</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 14 — CODE REVIEW 08
-══════════════════════════════════════ -->
+        <!-- PAGE 14 — CODE REVIEW 08 -->
         <div class="page page-code">
             <span class="label" style="margin-bottom:0;">PROJECT 08 · CODE REVIEW</span>
             <div class="code-heading">코드 리뷰</div>
@@ -2623,12 +2540,9 @@ note_cache = {}
             <div class="page-num">— 16</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 15 — CONTACT
-══════════════════════════════════════ -->
+        <!-- PAGE 15 — CONTACT -->
         <div class="page page-contact">
             <canvas class="matrix-canvas" id="mc-contact" style="opacity:0.06;"></canvas>
-
             <div class="contact-left">
                 <span class="label">CONTACT</span>
                 <div class="contact-big">LET'S<br>WORK<br><span>TOGETHER</span></div>
@@ -2657,7 +2571,6 @@ note_cache = {}
                     함께할 프로젝트나 협업 기회가 있다면 언제든지 연락 부탁드립니다.
                 </p>
             </div>
-
             <div class="contact-right">
                 <div class="avail-badge">
                     <div class="avail-dot"></div>AVAILABLE FOR OPPORTUNITIES
@@ -2691,13 +2604,10 @@ note_cache = {}
                         것을 목표로 하고 있습니다.</p>
                 </div>
             </div>
-
             <div class="page-num">— 17</div>
         </div>
 
-        <!-- ══════════════════════════════════════
-     PAGE 16 — MATRIX FILLER (남는 공간 채우기)
-══════════════════════════════════════ -->
+        <!-- PAGE 16 — MATRIX FILLER -->
         <div class="page page-matrix">
             <canvas id="mc-matrix-full" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;"></canvas>
             <div class="matrix-overlay-text">
@@ -2728,9 +2638,6 @@ note_cache = {}
     </div><!-- /pages -->
 
     <script>
-        /* ══════════════════════════════════════════════════════════
-           MATRIX RAIN — Canvas 기반 진짜 매트릭스 빗물 효과
-        ══════════════════════════════════════════════════════════ */
         function MatrixRain(canvas, opts = {}) {
             const dark = opts.dark || false;
             const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン ABCDEFGHIJKLMNOPQRSTUVWXYZif for while return class void int float';
@@ -2751,18 +2658,13 @@ note_cache = {}
                 const fs = canvas._fs || 14;
                 ctx.fillStyle = dark ? 'rgba(10,15,26,0.08)' : 'rgba(238,242,247,0.08)';
                 ctx.fillRect(0, 0, W, H);
-
                 ctx.font = `${fs}px Inconsolata, monospace`;
                 for (let i = 0; i < drops.length; i++) {
                     const char = chars[Math.floor(Math.random() * chars.length)];
-                    // leading char brighter
                     ctx.fillStyle = dark ? '#18c96a' : 'rgba(24,201,106,0.9)';
                     ctx.fillText(char, i * fs, drops[i] * fs);
-
-                    // trail
                     ctx.fillStyle = dark ? 'rgba(24,201,106,0.35)' : 'rgba(24,120,80,0.25)';
                     ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * fs, (drops[i] - 1) * fs);
-
                     if (drops[i] * fs > H && Math.random() > 0.975) drops[i] = 0;
                     drops[i]++;
                 }
@@ -2773,93 +2675,54 @@ note_cache = {}
             return setInterval(draw, 50);
         }
 
-        /* Title page subtle rain */
-        (function () {
-            const c = document.getElementById('mc-title');
-            if (c) MatrixRain(c, { dark: false });
-        })();
+        (function () { const c = document.getElementById('mc-title'); if (c) MatrixRain(c, { dark: false }); })();
+        (function () { const c = document.getElementById('mc-contact'); if (c) MatrixRain(c, { dark: false }); })();
 
-        /* Contact page subtle rain */
-        (function () {
-            const c = document.getElementById('mc-contact');
-            if (c) MatrixRain(c, { dark: false });
-        })();
-
-        /* Full matrix page — intense rain */
         (function () {
             const c = document.getElementById('mc-matrix-full');
             if (!c) return;
-
-            function resize() {
-                const rect = c.parentElement.getBoundingClientRect();
-                c.width = rect.width;
-                c.height = rect.height;
-            }
+            function resize() { const rect = c.parentElement.getBoundingClientRect(); c.width = rect.width; c.height = rect.height; }
             resize();
             window.addEventListener('resize', resize);
-
             const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホif for while return class void int float bool PERFECT GOOD BAD AABB CCD FPS deltaTime ObjectPool BehaviorTree LineTrace TakeDamage AES256 CBC HLSL DirectX UE5';
             let drops = [];
-
-            function init() {
-                const fs = Math.max(11, c.width * 0.009);
-                c._fs = fs;
-                const cols = Math.floor(c.width / fs);
-                drops = Array(cols).fill(0).map(() => Math.random() * -100);
-            }
+            function init() { const fs = Math.max(11, c.width * 0.009); c._fs = fs; const cols = Math.floor(c.width / fs); drops = Array(cols).fill(0).map(() => Math.random() * -100); }
             init();
             window.addEventListener('resize', init);
-
             setInterval(function () {
                 const ctx = c.getContext('2d');
                 const fs = c._fs || 14;
                 ctx.fillStyle = 'rgba(10,15,26,0.05)';
                 ctx.fillRect(0, 0, c.width, c.height);
                 ctx.font = `${fs}px Inconsolata, monospace`;
-
                 for (let i = 0; i < drops.length; i++) {
                     const char = chars.split('').concat(chars.split(' '))[Math.floor(Math.random() * (chars.length + chars.split(' ').length))];
-                    // head
                     ctx.fillStyle = '#ffffff';
                     ctx.fillText(typeof char === 'string' ? char[0] || '0' : '0', i * fs, drops[i] * fs);
-                    // body gradient
                     const intensity = Math.random();
-                    if (intensity > 0.7) {
-                        ctx.fillStyle = '#18c96a';
-                    } else if (intensity > 0.4) {
-                        ctx.fillStyle = 'rgba(24,201,106,0.6)';
-                    } else {
-                        ctx.fillStyle = 'rgba(24,201,106,0.2)';
-                    }
+                    if (intensity > 0.7) { ctx.fillStyle = '#18c96a'; }
+                    else if (intensity > 0.4) { ctx.fillStyle = 'rgba(24,201,106,0.6)'; }
+                    else { ctx.fillStyle = 'rgba(24,201,106,0.2)'; }
                     const word = chars.split(' ')[Math.floor(Math.random() * chars.split(' ').length)];
                     ctx.fillText(word ? word[0] : '0', i * fs, (drops[i] - 1) * fs);
-
                     if (drops[i] * fs > c.height && Math.random() > 0.97) drops[i] = 0;
                     drops[i] += 0.5 + Math.random() * 0.5;
                 }
             }, 33);
         })();
 
-        /* ══════════════════════════════════════════════════════════
-           COUNT-UP ANIMATION
-        ══════════════════════════════════════════════════════════ */
         function animateCount(el, target, duration) {
             const start = performance.now();
             function step(now) {
                 const p = Math.min((now - start) / duration, 1);
                 const eased = 1 - Math.pow(1 - p, 3);
                 const val = Math.round(eased * target);
-                el.textContent = target >= 1000
-                    ? val.toLocaleString() + '+'
-                    : val + '+';
+                el.textContent = target >= 1000 ? val.toLocaleString() + '+' : val + '+';
                 if (p < 1) requestAnimationFrame(step);
             }
             requestAnimationFrame(step);
         }
 
-        /* ══════════════════════════════════════════════════════════
-           INTERSECTION OBSERVER — skill bars + counters
-        ══════════════════════════════════════════════════════════ */
         const io = new IntersectionObserver(entries => {
             entries.forEach(e => {
                 if (!e.isIntersecting) return;
