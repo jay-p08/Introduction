@@ -10,10 +10,6 @@
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
         rel="stylesheet">
     <style>
-        /* ══════════════════════════════════════════════════════════
-   CORE DESIGN SYSTEM
-   모든 폰트/간격은 vw 기준 → 16:9 어느 해상도에서도 동일 비율
-══════════════════════════════════════════════════════════ */
         :root {
             --bg: #eef2f7;
             --surface: #e4eaf3;
@@ -86,7 +82,6 @@
             overflow: hidden;
         }
 
-        /* Grid overlay */
         .page::before {
             content: '';
             position: absolute;
@@ -110,7 +105,6 @@
             z-index: 10;
         }
 
-        /* ══ LABEL ══ */
         .label {
             font-family: 'Inconsolata', monospace;
             font-size: var(--f-xs);
@@ -1417,12 +1411,10 @@
             <div class="page-num">— 01</div>
         </div>
 
-        <!-- PAGE 02 — ABOUT ME (수정됨: text-block 2개를 스택 아래 가로 배치로 이동) -->
+        <!-- PAGE 02 — ABOUT ME -->
         <div class="page"
             style="display:grid;grid-template-columns:14.58vw 1fr;gap:2.08vw;padding:2.6vw var(--pad-page);align-content:start;">
             <div style="grid-column:1/-1;"><span class="label">ABOUT ME</span></div>
-
-            <!-- left: 프로필 카드만 -->
             <div style="display:flex;flex-direction:column;gap:0.83vw;position:relative;z-index:1;">
                 <div class="profile-card">
                     <div class="avatar">
@@ -1448,8 +1440,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- right: Technical Stack + Proficiency + Philosophy/Focus (2열 가로 배치) -->
             <div class="p02-right">
                 <div class="stack-heading">Technical Stack</div>
                 <div class="stack-grid">
@@ -1522,7 +1512,6 @@
                         <div class="skill-pct">60%</div>
                     </div>
                 </div>
-                <!-- Core Philosophy + Current Focus: 2열 가로 배치 -->
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.63vw;">
                     <div class="text-block">
                         <div class="text-block-title">Core Philosophy</div>
@@ -1610,14 +1599,7 @@
                             diff = abs(note_time - input_time)
                             if diff &lt; 40: return "PERFECT"
                             elif diff &lt; 80: return "GOOD"
-                            elif diff &lt; 120: return "BAD"
-
-                            note_cache = {}
-                            def get_note_image(size):
-                            if size not in note_cache:
-                            note_cache[size] = pygame.transform\
-                            .smoothscale(NOTE_IMG,(size,size))
-                            return note_cache[size]</div>
+                            elif diff &lt; 120: return "BAD"</div>
                         <img src="img/pymax_01.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -1627,18 +1609,7 @@
                         <div class="shot-bg-code">class GameState(Enum):
                             MENU = "menu"
                             PLAYING = "playing"
-                            RESULT = "result"
-
-                            class RhythmGame:
-                            def __init__(self):
-                            self.state = GameState.MENU
-                            self.score = 0
-                            self.combo = 0
-                            self.notes = []
-
-                            def update(self, dt):
-                            for note in self.notes:
-                            note.y += NOTE_SPEED * dt</div>
+                            RESULT = "result"</div>
                         <img src="img/pymax_02.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -1685,11 +1656,13 @@
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 설계 의도</div>
-                        <p>노트 도달 시각과 키 입력 시각의 절댓값 차이(ms 단위)로 판정합니다. 숫자를 상수로 분리하면 난이도 조정이 용이해집니다.</p>
+                        <p>노트 도달 시각과 키 입력 시각의 절댓값 차이(ms 단위)로 판정 등급을 결정합니다. ±40 / ±80 / ±120ms 세 임계값을 상수로 분리해, 숫자 하나만 바꿔도
+                            전체 난이도 곡선이 조정되도록 설계했습니다. 이 구조 덕분에 난이도 모드 추가 시 판정 함수 자체를 건드리지 않아도 됩니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>밀리초 단위 오차가 체감에 직접 영향을 줍니다. UX와 수치가 분리되지 않음을 직접 실험으로 깨달았습니다.</p>
+                        <p>실제 테스트에서 ±40ms와 ±50ms의 차이가 플레이어 체감에 뚜렷하게 나타났습니다. 수치는 코드 안에 있지만 결과는 UX에 직결된다는 사실, 즉 '숫자와 경험은
+                            분리되지 않는다'는 점을 직접 실험으로 깨달았습니다. 이후 매직 넘버를 상수로 분리하는 습관을 갖게 된 계기가 됐습니다.</p>
                     </div>
                 </div>
             </div>
@@ -1707,11 +1680,13 @@ note_cache = {}
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 문제 상황</div>
-                        <p>노트가 쌓일수록 매 프레임 smoothscale이 반복 호출되어 FPS가 급락했습니다.</p>
+                        <p>노트가 20개 이상 쌓이면 매 프레임 smoothscale이 노트 수만큼 반복 호출되어 FPS가 60에서 20대까지 급락했습니다. 특히 빠른 BPM 구간에서 노트
+                            밀도가 높아질수록 드랍이 심해져 판정 정확도까지 영향을 받았습니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>딕셔너리 캐시로 동일 크기 이미지를 재사용했습니다. 드로우콜 최소화와 메모리 트레이드오프를 처음 직접 체감했습니다.</p>
+                        <p>딕셔너리를 size 키로 인덱싱해 동일 크기 이미지를 재사용하자 CPU 사용량이 즉시 절반 이하로 감소했습니다. 캐시는 메모리를 더 쓰는 대신 연산 비용을 줄이는
+                            전형적인 트레이드오프로, 렌더링 최적화의 핵심은 '무엇을 계산하지 않을지' 결정하는 것임을 배웠습니다.</p>
                     </div>
                 </div>
             </div>
@@ -1783,21 +1758,13 @@ note_cache = {}
                     <div class="shot-slot">
                         <div class="shot-bg-code">from Crypto.Cipher import AES
                             import os
-
                             def encrypt_file(path, key):
                             iv = os.urandom(16)
                             cipher = AES.new(key, AES.MODE_CBC, iv)
                             with open(path, 'rb') as f:
                             data = f.read()
                             encrypted = cipher.encrypt(pad(data, 16))
-                            return iv + encrypted
-
-                            def walk_and_encrypt(root, key, exts):
-                            for dirpath, _, files in os.walk(root):
-                            for fname in files:
-                            if any(fname.endswith(e) for e in exts):
-                            fpath = os.path.join(dirpath, fname)
-                            result = encrypt_file(fpath, key)</div>
+                            return iv + encrypted</div>
                         <img src="img/Ransomware_01.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -1805,20 +1772,10 @@ note_cache = {}
                     </div>
                     <div class="shot-slot">
                         <div class="shot-bg-code">AES-256 CBC MODE
-                            KEY_SIZE = 256 bits
-                            BLOCK = 128 bits
-                            IV = os.urandom(16)
-                            PADDING = PKCS7
-
-                            ENCRYPT FLOW:
-                            plaintext → pad → AES_CBC → iv+ciphertext
-
-                            DECRYPT FLOW:
-                            iv+ciphertext → split → AES_CBC → unpad
-
-                            SECURITY NOTE:
-                            IV must be unique per file
-                            Key must be securely stored</div>
+                            KEY_SIZE = 256 bits / BLOCK = 128 bits
+                            IV = os.urandom(16) / PADDING = PKCS7
+                            ENCRYPT: plaintext → pad → AES_CBC → iv+ciphertext
+                            DECRYPT: iv+ciphertext → split → AES_CBC → unpad</div>
                         <img src="img/Ransomware_02.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -1868,11 +1825,14 @@ note_cache = {}
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 설계 의도</div>
-                        <p>파일마다 다른 IV를 생성해 동일한 키로 암호화해도 암호문이 달라지도록 설계했습니다. IV는 암호문 앞에 붙여 복호화 시 분리합니다.</p>
+                        <p>파일마다 os.urandom(16)으로 고유한 IV를 생성해, 동일한 키로 같은 내용을 암호화해도 매번 다른 암호문이 만들어지도록 설계했습니다. IV는 암호문 앞
+                            16바이트에 붙여 저장하므로 복호화 시 키만 있으면 IV를 자동으로 분리·복원할 수 있습니다. 이 방식으로 패턴 분석 공격에 대한 기본 방어를 구현했습니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>CBC 모드에서 패딩이 없으면 블록 크기 불일치로 오류가 발생합니다. 암호화는 알고리즘보다 키/IV 관리 방식이 보안의 핵심임을 배웠습니다.</p>
+                        <p>CBC 모드에서 패딩 없이 실행하면 블록 크기(16바이트)와 데이터 크기가 맞지 않을 때 즉시 오류가 발생합니다. PKCS7 패딩을 추가하고 나서야 임의 크기 파일을
+                            안정적으로 처리할 수 있었습니다. 아무리 강력한 알고리즘을 써도 키와 IV 관리가 허술하면 무의미하다는 것, 보안의 핵심은 키 라이프사이클 관리임을 실감했습니다.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1943,39 +1903,26 @@ note_cache = {}
                     <div class="shot-slot">
                         <div class="shot-bg-code">class BulletPool {
                             std::vector&lt;Bullet&gt; pool;
-                            int maxSize;
                             public:
                             Bullet* Acquire() {
                             for (auto& b : pool)
-                            if (!b.active) {
-                            b.active = true;
-                            return &b;
-                            }
+                            if (!b.active) { b.active=true; return &b; }
                             return nullptr;
                             }
-                            void Release(Bullet* b) {
-                            b->active = false;
-                            }
-                            };
-                            // AABB: a.x &lt; b.x+b.w
-                            // && a.x+a.w &gt; b.x</div>
+                            void Release(Bullet* b) { b->active = false; }
+                            };</div>
                         <img src="img/SpaceOut_01.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
                         <div class="shot-label">SCREENSHOT · 01</div>
                     </div>
                     <div class="shot-slot">
-                        <div class="shot-bg-code">// HLSL Pixel Shader
-                            float4 PS_Sprite(VS_OUTPUT input) : SV_Target {
+                        <div class="shot-bg-code">float4 PS_Sprite(VS_OUTPUT input) : SV_Target {
                             float4 color = spriteTexture.Sample(
                             samplerState, input.texCoord);
                             clip(color.a - 0.01f);
                             return color * input.color;
-                            }
-                            // Parallax Layers:
-                            // Layer 0: speed 0.2 (far bg)
-                            // Layer 1: speed 0.5 (mid bg)
-                            // Layer 2: speed 1.0 (foreground)</div>
+                            }</div>
                         <img src="img/SpaceOut_02.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -2029,13 +1976,13 @@ note_cache = {}
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 설계 의도</div>
-                        <p>총알을 매번 new/delete 하면 메모리 단편화와 할당 비용이 프레임마다 누적됩니다. 미리 할당된 풀에서 active 플래그로 재사용해 동적 할당을 완전히
-                            제거했습니다.</p>
+                        <p>총알을 발사할 때마다 new/delete를 호출하면 메모리 단편화와 힙 할당 비용이 프레임마다 누적됩니다. 게임 시작 시 최대 총알 수만큼 풀에 미리 할당해두고,
+                            active 플래그로 사용 여부를 관리해 동적 할당을 완전히 제거했습니다. 결과적으로 초당 수십 발 발사 시에도 메모리 사용량이 일정하게 유지됩니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>슈팅 게임처럼 오브젝트 생성·소멸이 빈번한 장르에서 오브젝트 풀링은 필수입니다. 풀 크기를 초과하면 nullptr을 반환하므로, 호출부에서 반드시 null 체크가
-                            필요함을 배웠습니다.</p>
+                        <p>슈팅 게임처럼 오브젝트 생성·소멸이 초당 수십 회 반복되는 장르에서 풀링은 선택이 아닌 필수입니다. 풀 크기를 초과하면 nullptr을 반환하므로 호출부에서 반드시
+                            null 체크가 필요하며, 풀 크기는 게임 설계 단계에서 충분히 산정해야 함을 배웠습니다. 이 패턴은 이후 UE5 프로젝트에도 동일하게 적용했습니다.</p>
                     </div>
                 </div>
             </div>
@@ -2054,13 +2001,15 @@ note_cache = {}
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 설계 의도</div>
-                        <p>2D 스프라이트의 배경을 투명하게 처리하기 위해 알파 채널을 샘플링 후 clip()으로 픽셀을 버립니다. input.color를 곱해 피격 시 붉은 플래시 효과도
-                            적용했습니다.</p>
+                        <p>2D 스프라이트의 배경을 투명하게 처리하기 위해 알파 채널을 샘플링한 뒤 clip()으로 임계값 미만 픽셀을 파이프라인에서 완전히 제거합니다. input.color를
+                            최종 컬러에 곱하는 구조 덕분에 C++ 코드에서 색상값만 전달하면 피격 시 붉은 플래시, 무적 시 반투명 깜빡임 등 다양한 시각 효과를 셰이더 수정 없이 적용할 수
+                            있습니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>clip()은 해당 픽셀을 렌더링 파이프라인에서 완전히 제거해 알파 블렌딩보다 성능이 좋습니다. 단, 반투명 표현이 필요한 경우엔 블렌드 스테이트를 별도로 설정해야
-                            함을 배웠습니다.</p>
+                        <p>clip()은 픽셀을 파이프라인에서 완전히 폐기하므로 알파 블렌딩보다 GPU 비용이 낮습니다. 단, 반투명 표현이 필요한 경우엔 clip() 대신
+                            D3D11_BLEND_SRC_ALPHA 블렌드 스테이트를 별도로 설정해야 합니다. 시행착오를 통해 셰이더 하나로 여러 시각 효과를 처리하는 범용 설계의 가치를
+                            배웠습니다.</p>
                     </div>
                 </div>
             </div>
@@ -2130,21 +2079,14 @@ note_cache = {}
                 <div class="proj-right">
                     <div class="shot-slot">
                         <div class="shot-bg-code">enum MonsterState { ROAM, CHASE, FLEE }
-
                             class Monster {
                             MonsterState state = ROAM;
                             float detectRadius = 120f;
-
                             void update(Player p) {
                             float dist = distance(pos, p.pos);
                             if (hp &lt; 30) state = FLEE;
                             else if (dist &lt; detectRadius) state = CHASE;
                             else state = ROAM;
-                            switch(state) {
-                            case ROAM: roamBehavior(); break;
-                            case CHASE: chaseBehavior(p); break;
-                            case FLEE: fleeBehavior(p); break;
-                            }
                             }
                             }</div>
                         <img src="img/Bubble_01.png" alt=""
@@ -2154,19 +2096,14 @@ note_cache = {}
                     </div>
                     <div class="shot-slot">
                         <div class="shot-bg-code">boolean checkAABB(Rect a, Rect b) {
-                            return a.x &lt; b.x + b.w
-                            && a.x + a.w &gt; b.x
-                            && a.y &lt; b.y + b.h
-                            && a.y + a.h &gt; b.y;
+                            return a.x &lt; b.x+b.w && a.x+a.w &gt; b.x
+                            && a.y &lt; b.y+b.h && a.y+a.h &gt; b.y;
                             }
                             void resolveCollision(Entity e, Tile t) {
                             float overlapX = Math.min(
-                            e.right() - t.left(),
-                            t.right() - e.left());
-                            e.x += (e.centerX() &lt; t.centerX())
-                            ? -overlapX : overlapX;
-                            }
-                            // Bubble: SPAWN → FLOAT → BURST (2.5s)</div>
+                            e.right()-t.left(), t.right()-e.left());
+                            e.x += (e.centerX()&lt;t.centerX())?-overlapX:overlapX;
+                            }</div>
                         <img src="img/Bubble_02.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -2219,12 +2156,14 @@ note_cache = {}
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 설계 의도</div>
-                        <p>축 분리 이론(SAT)의 2D 간소화 버전입니다. 겹침 거리(overlap)를 측정해 가장 짧은 축으로 밀어내 물체가 벽을 통과하지 않도록 합니다.</p>
+                        <p>축 분리 이론(SAT)의 2D 간소화 버전으로, 두 사각형의 각 축 투영이 겹치는지 4개의 조건으로 판별합니다. 단순한 불리언 판정에 그치지 않고 겹침
+                            거리(overlap)를 계산해 가장 짧은 축 방향으로 엔티티를 밀어냄으로써, 물체가 타일을 통과하지 않고 자연스럽게 막히도록 충돌 해소까지 함께 구현했습니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>속도가 빠른 오브젝트는 한 프레임에 벽을 통과할 수 있습니다(터널링). Continuous Collision Detection이 필요하다는 것을 이 프로젝트에서 처음
-                            인식했습니다.</p>
+                        <p>속도가 빠른 오브젝트는 한 프레임 사이에 충돌체를 완전히 통과해버리는 터널링 현상이 발생할 수 있음을 이 프로젝트에서 처음 직접 확인했습니다. 이를 해결하려면
+                            이산(Discrete) 방식이 아닌 연속 충돌 감지(CCD)가 필요하다는 것을 인식했고, 이후 물리 구현 시 오브젝트 속도와 충돌 감지 방식을 함께 고려하는 습관을
+                            갖게 됐습니다.</p>
                     </div>
                 </div>
             </div>
@@ -2301,10 +2240,7 @@ note_cache = {}
                             for (int c = 0; c &lt; n; c++)
                             rotated[c][n-1-r] = shape[r][c];
                             return rotated;
-                            }
-                            // I O T S Z J L pieces
-                            // Matrix rotation = Transpose + Col Reverse
-                            // SRS wall kick table applied after rotation</div>
+                            } // Transpose + Col Reverse = 90° CW</div>
                         <img src="img/Tetris_01.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -2312,15 +2248,14 @@ note_cache = {}
                     </div>
                     <div class="shot-slot">
                         <div class="shot-bg-code">void clearLines(int[][] board) {
-                            for (int r = board.length-1; r &gt;= 0; r--) {
+                            for (int r = board.length-1; r >= 0; r--) {
                             boolean full = true;
                             for (int cell : board[r])
                             if (cell == 0) { full=false; break; }
                             if (full) {
-                            for (int rr=r; rr&gt;0; rr--)
+                            for (int rr=r; rr>0; rr--)
                             board[rr]=board[rr-1].clone();
-                            board[0] = new int[COLS];
-                            r++;
+                            board[0] = new int[COLS]; r++;
                             }
                             }
                             }</div>
@@ -2371,11 +2306,42 @@ note_cache = {}
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 설계 의도</div>
-                        <p>2D 배열 전치(transpose) + 열 반전으로 시계 방향 90도 회전을 구현합니다. 별도의 회전 상태 배열 없이 수식 하나로 처리됩니다.</p>
+                        <p>2D 배열의 전치(transpose) + 열 반전으로 시계 방향 90도 회전을 구현합니다. 4방향 회전 상태를 별도 배열로 저장하지 않고 수식 하나로 매번 계산하므로,
+                            7종 블록 모두 동일한 함수 하나로 처리됩니다. 코드 중복 없이 확장 가능한 구조입니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>선형 대수의 행렬 변환이 실제 게임 로직에 그대로 쓰인다는 것을 처음 체감했습니다. 회전 후 벽 충돌 체크를 반드시 병행해야 자연스러운 SRS 회전이 됩니다.</p>
+                        <p>선형 대수에서 배운 행렬 전치와 열 반전이 게임 로직에 그대로 적용된다는 것을 처음 체감했습니다. 또한 회전 후에는 반드시 벽·바닥·다른 블록과의 충돌을 검사하고,
+                            충돌 시 SRS 킥 테이블을 적용해야 자연스러운 회전감이 만들어진다는 것도 직접 구현하며 배웠습니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="code-review-block">
+                <div class="code-wrap">
+                    <div class="code-label">핵심 코드 — 라인 클리어 (Bottom-Up)</div>
+                    <pre class="code-block"><code><span class="kw">void</span> <span class="fn">clearLines</span>(<span class="kw">int</span>[][] board) {
+    <span class="kw">for</span> (<span class="kw">int</span> r = board.length-<span class="nm">1</span>; r &gt;= <span class="nm">0</span>; r--) {
+        <span class="kw">boolean</span> full = <span class="kw">true</span>;
+        <span class="kw">for</span> (<span class="kw">int</span> cell : board[r])
+            <span class="kw">if</span> (cell == <span class="nm">0</span>) { full=<span class="kw">false</span>; <span class="kw">break</span>; }
+        <span class="kw">if</span> (full) {
+            <span class="kw">for</span> (<span class="kw">int</span> rr=r; rr&gt;<span class="nm">0</span>; rr--)
+                board[rr]=board[rr-<span class="nm">1</span>].clone();
+            board[<span class="nm">0</span>] = <span class="kw">new int</span>[COLS]; r++;
+        }
+    }
+}</code></pre>
+                </div>
+                <div class="learned-panel">
+                    <div class="learned-item">
+                        <div class="learned-title">▸ 설계 의도</div>
+                        <p>보드를 아래에서 위로 스캔해 완전히 찬 줄을 감지하면, 그 위의 모든 줄을 한 칸씩 복사해 내립니다. r++로 같은 인덱스를 다시 검사해 연속 클리어(테트리스)도
+                            정확하게 처리됩니다. 복잡한 자료구조 없이 2차원 배열 하나로 전체 보드 상태를 관리합니다.</p>
+                    </div>
+                    <div class="learned-item">
+                        <div class="learned-title">▸ 배운 점</div>
+                        <p>클리어 후 r++를 하지 않으면 같은 위치에 내려온 새 줄을 검사하지 못해 연속 클리어가 누락됩니다. 작은 인덱스 실수 하나가 게임 전체 로직에 영향을 준다는 사실을
+                            체험했고, 알고리즘의 경계 조건(edge case)을 꼼꼼히 검토하는 습관을 갖게 됐습니다.</p>
                     </div>
                 </div>
             </div>
@@ -2451,34 +2417,26 @@ note_cache = {}
                     <div class="shot-slot">
                         <div class="shot-bg-code">void AMyWeapon::Fire() {
                             FVector Start = Camera->GetComponentLocation();
-                            FVector End = Start +
-                            Camera->GetForwardVector() * Range;
+                            FVector End = Start + Camera->GetForwardVector()*Range;
                             FHitResult Hit;
                             bool bHit = GetWorld()->LineTraceSingleByChannel(
                             Hit, Start, End, ECC_Visibility);
                             if (bHit && Hit.GetActor())
                             Hit.GetActor()->TakeDamage(Damage, ...);
-                            }
-                            // Behavior Tree: Patrol→Chase→Attack→Flee
-                            // Enhanced Input: IA_Move, IA_Look, IA_Fire</div>
+                            }</div>
                         <img src="img/FPS_01.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
                         <div class="shot-label">SCREENSHOT · 01</div>
                     </div>
                     <div class="shot-slot">
-                        <div class="shot-bg-code">// Actor-Component Architecture:
-                            // AMyCharacter
+                        <div class="shot-bg-code">// AMyCharacter
                             // ├─ UCameraComponent
                             // ├─ USkeletalMeshComponent
                             // ├─ UCharacterMovementComponent
                             // └─ UHealthComponent
-
-                            // IDamageable Polymorphism:
-                            // AEnemy_Grunt → TakeDamage()
-                            // AEnemy_Elite → TakeDamage()
-                            // AEnemy_Boss → TakeDamage()
-                            // → Uniform damage regardless of type</div>
+                            // IDamageable: AEnemy_Grunt / Elite / Boss
+                            // → TakeDamage() uniform interface</div>
                         <img src="img/FPS_02.png" alt=""
                             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"
                             onerror="this.style.display='none'">
@@ -2528,12 +2486,43 @@ note_cache = {}
                 <div class="learned-panel">
                     <div class="learned-item">
                         <div class="learned-title">▸ 설계 의도</div>
-                        <p>물리 투사체 대신 LineTrace(히트스캔)로 즉각적인 명중 판정을 구현합니다. 카메라 기준으로 레이를 쏘아 첫 번째 충돌 액터에 데미지를 적용합니다.</p>
+                        <p>물리 투사체(Projectile) 대신 LineTrace로 즉각적인 명중 판정을 구현해 고속 탄환의 지연 없는 피격감을 만들었습니다. 카메라 위치에서 전방 벡터
+                            방향으로 레이를 발사해 첫 번째 가시 충돌 액터를 감지하고, TakeDamage 인터페이스로 데미지를 전달해 적 클래스 종류에 무관하게 동일한 로직이 동작하도록
+                            다형성을 활용했습니다.</p>
                     </div>
                     <div class="learned-item">
                         <div class="learned-title">▸ 배운 점</div>
-                        <p>Unreal의 컴포넌트 기반 구조를 직접 다루며 Actor-Component 관계를 체감했습니다. TakeDamage 인터페이스로 적 종류와 무관하게 데미지를 적용하는
-                            다형성 설계를 배웠습니다.</p>
+                        <p>Unreal의 Actor-Component 구조를 직접 다루며 기능을 컴포넌트 단위로 분리하는 설계의 강점을 체감했습니다. TakeDamage 인터페이스 하나로
+                            Grunt·Elite·Boss 등 모든 적 타입에 동일한 데미지 로직을 적용할 수 있어, 새로운 적 유형 추가 시 무기 코드를 전혀 수정하지 않아도 됩니다.
+                            개방-폐쇄 원칙(OCP)의 실용적 가치를 배웠습니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="code-review-block">
+                <div class="code-wrap">
+                    <div class="code-label">아키텍처 — Actor-Component 구조</div>
+                    <pre class="code-block"><code><span class="cm">// AMyCharacter 컴포넌트 계층</span>
+<span class="cm">// ├─ UCameraComponent        (시점)</span>
+<span class="cm">// ├─ USkeletalMeshComponent  (메시)</span>
+<span class="cm">// ├─ UCharacterMovement      (이동)</span>
+<span class="cm">// └─ UHealthComponent        (체력)</span>
+
+<span class="cm">// 다형성 데미지 인터페이스</span>
+<span class="cm">// AEnemy_Grunt → TakeDamage()</span>
+<span class="cm">// AEnemy_Elite → TakeDamage()</span>
+<span class="cm">// AEnemy_Boss  → TakeDamage()</span>
+<span class="cm">// → 무기 코드 수정 없이 확장 가능</span></code></pre>
+                </div>
+                <div class="learned-panel">
+                    <div class="learned-item">
+                        <div class="learned-title">▸ 설계 의도</div>
+                        <p>체력·이동·카메라를 각각 독립 컴포넌트로 분리해, 기능 추가·수정 시 다른 컴포넌트에 영향을 주지 않도록 설계했습니다. TakeDamage 인터페이스를 통해 어떤 적
+                            타입이든 동일한 방식으로 데미지를 처리할 수 있어, 보스 추가나 새로운 적 종류 확장이 무기 코드 수정 없이 가능합니다.</p>
+                    </div>
+                    <div class="learned-item">
+                        <div class="learned-title">▸ 배운 점</div>
+                        <p>Unreal의 컴포넌트 기반 아키텍처를 직접 구성하면서 게임 오브젝트를 기능 단위로 쪼개는 설계 철학을 몸으로 익혔습니다. Behavior Tree와
+                            Blackboard의 조합으로 AI 상태와 로직을 분리하면, 새로운 행동 패턴 추가 시 기존 트리를 최소한으로 수정해도 된다는 확장성의 이점을 실감했습니다.</p>
                     </div>
                 </div>
             </div>
@@ -2642,7 +2631,6 @@ note_cache = {}
             const dark = opts.dark || false;
             const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン ABCDEFGHIJKLMNOPQRSTUVWXYZif for while return class void int float';
             let W, H, cols, drops;
-
             function resize() {
                 const rect = canvas.parentElement.getBoundingClientRect();
                 W = canvas.width = rect.width;
@@ -2652,7 +2640,6 @@ note_cache = {}
                 drops = Array(cols).fill(1).map(() => Math.random() * -50);
                 canvas._fs = fs;
             }
-
             function draw() {
                 const ctx = canvas.getContext('2d');
                 const fs = canvas._fs || 14;
@@ -2669,22 +2656,19 @@ note_cache = {}
                     drops[i]++;
                 }
             }
-
             resize();
             window.addEventListener('resize', resize);
             return setInterval(draw, 50);
         }
-
         (function () { const c = document.getElementById('mc-title'); if (c) MatrixRain(c, { dark: false }); })();
         (function () { const c = document.getElementById('mc-contact'); if (c) MatrixRain(c, { dark: false }); })();
-
         (function () {
             const c = document.getElementById('mc-matrix-full');
             if (!c) return;
             function resize() { const rect = c.parentElement.getBoundingClientRect(); c.width = rect.width; c.height = rect.height; }
             resize();
             window.addEventListener('resize', resize);
-            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホif for while return class void int float bool PERFECT GOOD BAD AABB CCD FPS deltaTime ObjectPool BehaviorTree LineTrace TakeDamage AES256 CBC HLSL DirectX UE5';
+            const chars = '01アイウエオカキクケコif for while return class void int float bool PERFECT GOOD BAD AABB CCD FPS deltaTime ObjectPool BehaviorTree LineTrace TakeDamage AES256 CBC HLSL DirectX UE5';
             let drops = [];
             function init() { const fs = Math.max(11, c.width * 0.009); c._fs = fs; const cols = Math.floor(c.width / fs); drops = Array(cols).fill(0).map(() => Math.random() * -100); }
             init();
